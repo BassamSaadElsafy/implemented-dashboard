@@ -12,11 +12,13 @@
     5- $php artisan tinker               //to create admin account
         >>>App\Models\Admin::create(['name' => 'admin', 'email' => 'admin@admin.com' , 'password' => Hash::make(123456), 'phone' => '01012345678']);
 
-    6- go to 
+    6- $php artisan serve 
+
+    7- go to 
         localhost:8000/dashboard/home
         this link will redirect you to login page 
         ==> enter your email and password
-
+ 
     ////////////////////////thanks/////////////////////////
 
 </p>
