@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
-
 use App\Models\Admin;
 use Illuminate\Http\Request;
-
 use App\DataTables\AdminDatatable;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -53,7 +51,7 @@ class AdminController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'phone'    => $request->phone,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
 
         session()->flash('success', 'account created successfully');
@@ -67,7 +65,7 @@ class AdminController extends Controller
     public function edit(Admin $admin)
     {
 
-        return view('dashboard.admins.edit' , ['title' => trans('admin.edit_record') , 'admin' => $admin]);
+        return view('dashboard.admins.edit' , ['title' => trans('dashboard.edit_record') , 'admin' => $admin]);
 
     }//end of edit function
 
