@@ -97,8 +97,7 @@ class AdminDatatable extends DataTable
                         Button::make('csv' )   ->className('btn btn-success btn-sm')   ->text('<i class="fa fa-file"></i> '.trans('dashboard.export_csv')),
                         Button::make('excel' ) ->className('btn btn-warning btn-sm')   ->text('<i class="fa fa-file"></i> '.trans('dashboard.export_excel')),
                         Button::make('reload' )->className('btn btn-default btn-sm')   ->text('<i class="fa fa-refresh"></i> '),
-                        Button::make()         ->className('btn btn-danger delBtn')->text('<i class="fa fa-trash"></i>'),
-                        // Button::make('reset' ) ->className('btn btn-default')->text('<i class="fa fa-reset"></i> '),
+                        Button::make()         ->className('btn btn-danger btn-sm delBtn')->text('<i class="fa fa-trash"></i>'),
                     )
                     ->initComplete("function () {
                         this.api().columns([1,2]).every(function () {
@@ -109,7 +108,7 @@ class AdminDatatable extends DataTable
                                 column.search($(this).val(), false, false, true).draw();
                             });
                         });
-                       }")
+                    }")
                     ->language(self::lang());
     }
 

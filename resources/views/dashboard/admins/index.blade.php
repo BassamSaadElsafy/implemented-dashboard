@@ -12,15 +12,18 @@
     <!-- /.box-header -->
     <div class="box-body">
 
-      {!! Form::open(['id' => 'form_data' , 'url' => 'admins.destroy_all' , 'method' => 'delete']) !!}
+      {!! Form::open(['id' => 'form_data' , 'route' => 'admins.destroy_all' , 'method' => 'delete']) !!}
       {!! $dataTable->table(['class' => 'dataTable table table-striped table-hover table-bordered'] , true) !!}
       {!! Form::close() !!}
+
+      {{-- {!! $dataTable->table(['class' => 'dataTable table table-bordered table-hover']) !!} --}}
+
 
       <div id="multipleDelete" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">{{ trans('admin.delete_all') }}</h5>
+              <h5 class="modal-title">{{ trans('dashboard.delete_all') }}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -53,7 +56,6 @@
 
 
       
-      {!! $dataTable->table(['class' => 'dataTable table table-bordered table-hover']) !!}
 
     </div>
     <!-- /.box-body -->

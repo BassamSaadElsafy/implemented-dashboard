@@ -21,7 +21,6 @@ if(!function_exists("get_title")){
 
 }
 
-
 if(!function_exists("admin")){
 
     function admin(){

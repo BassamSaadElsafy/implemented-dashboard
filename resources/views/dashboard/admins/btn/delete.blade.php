@@ -1,5 +1,5 @@
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#admin{{$id}}"><i class="fa fa-trash"></i></a></button>
+<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#admin{{$id}}"><i class="fa fa-trash"></i></a></button>
 
 <!-- Modal -->
 <div id="admin{{$id}}" class="modal fade" role="dialog">

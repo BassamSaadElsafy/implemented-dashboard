@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 
 use App\DataTables\AdminDatatable;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -48,13 +49,6 @@ class AdminController extends Controller
             'confirm_password'  => 'required|same:password'
         ]);
 
-        // $admin = Admin::create([
-        //     'name'     => trim($request->input('name')),
-        //     'name'     => trim($request->input('phone')),
-        //     'email'    => strtolower($request->input('email')),
-        //     'password' => Hash::make($request->input('password')),
-        // ]);
-
         Admin::create([
             'name'     => $request->name,
             'email'    => $request->email,
@@ -68,48 +62,65 @@ class AdminController extends Controller
         return redirect()->route('admins.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
+    //edit function
     public function edit(Admin $admin)
     {
-        dd('welcome to edit admin information');
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
+        return view('dashboard.admins.edit' , ['title' => trans('admin.edit_record') , 'admin' => $admin]);
+
+    }//end of edit function
+
+    //update function
     public function update(Request $request, Admin $admin)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
+        $data = $this->validate(request() , [
+            'name'             => 'required',
+            'phone'            => 'required|numeric|regex:/(01)[0-9]{9}/|unique:admins,id,'.$admin->id,
+            'level'            => 'required',
+            'email'            => 'required|email|unique:admins,email,'.$admin->id,   //to ignore this id from unique
+            'password'         => 'required|min:6',
+            'confirm_password' => 'required|same:password|min:6'
+        ] , [] , [
+            'name'             => trans('dashboard.name'),
+            'phone'            => trans('dashboard.phone'),
+            'email'            => trans('dashboard.email'),
+            'password'         => trans('dashboard.password'),
+            'confirm_password' => trans('dashboard.confirm_password'),
+            'level'            => trans('dashboard.level'),
+        ]);
+
+        //delete index confirm password from data array
+        unset($data['confirm_password']);
+        if(request()->has('password')){
+            $data['password'] = bcrypt(request('password'));
+        }
+
+        $admin->update($data);
+        session()->flash('success' , trans('dashboard.record_updated'));
+        return redirect()->route('admins.index');
+
+    }//end of update function
+
+    //destroy function
     public function destroy(Admin $admin)
     {
-        //
-    }
+        $admin->delete();
+        session()->flash('success' , trans('dashboard.record_deleted'));
+        return redirect()->route('admins.index');
+
+    }//end of destroy function
+
+    //multi-delete function
+    public function multi_delete(){
+
+        if (is_array(request('item'))) {
+            Admin::destroy(request('item'));
+            session()->flash('success', trans('dashboard.record_deleted'));
+        }
+
+        session()->flash('error', trans('dashboard.something_went_wrong'));
+        return back();
+    }//end of multi-delete function
 }

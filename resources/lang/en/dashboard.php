@@ -58,6 +58,7 @@ return [
 
     'create_user'                => 'Create User',
     'add_admin'                   => 'Add Admin',
+    
     'confirm_password'            => 'Password Confirmation',
     'password'                    => 'Password',
     'level'                       => 'Level',
@@ -68,7 +69,17 @@ return [
     'warning'                     => 'Warning',
     'delete_record'               => 'Are you sure you want to delete this record?',
     'close'                       => 'Close',
-    'yes'                         => 'Yes'
+    'yes'                         => 'Yes',
+    'no'                          => 'No',
+    'please_check_some_records'   => 'Please check some records!!',
+    'delete_all'                  => 'Multi-Delete',
+    'ask_delete_item'             => 'Are you sure you want to delete ',
+    'que_mark'                    => '?',
+
+    'edit_record'                 => 'Edit Record',
+    'record_updated'              => 'Record Updated Successfully',
+    'record_deleted'              => 'Record Deleted Successfully',
+    'something_went_wrong'        => 'Something went wrong!',
  
 
 

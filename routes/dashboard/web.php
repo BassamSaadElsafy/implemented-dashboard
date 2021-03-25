@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Dashboard\AdminAuthentication;
 use App\Http\Controllers\Dashboard\AdminController;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Route;
 
-
-    Route::get('/login', [AdminAuthentication::class , 'login'])->name('dashboard.login');
+Route::get('/login', [AdminAuthentication::class , 'login'])->name('dashboard.login');
     Route::post('/login', [AdminAuthentication::class , 'dologin'])->name('dashboard.login');
 
     Route::get('/forgot/password', [AdminAuthentication::class , 'forgot_password'])->name('dashboard.forgot_password');
@@ -30,9 +30,9 @@ use Illuminate\Support\Facades\Auth;
                 'edit'        => 'admins.edit',
                 'update'      => 'admins.update',
                 'destroy'     => 'admins.destroy',
-                'destroy_all' => 'admins.destroy_all',
-                // etc...
             ]
         ]);
+
+        Route::delete('/admins/delete/all',[AdminController::class , 'multi_delete'])->name('admins.destroy_all');
 
     });
