@@ -8,16 +8,16 @@
     1- $composer install
     2- $cp .env.example .env
     3- open .env then change db_name. after that create it
-    4- $php artisan migrate 
-    5- $php artisan tinker               //to create admin account
-        >>>App\Models\Admin::create(['name' => 'admin', 'email' => 'admin@admin.com' , 'password' => Hash::make(123456), 'phone' => '01012345678']);
-
+    4- $php artisan migrate --seed
+  
     6- $php artisan serve 
 
     7- go to 
         localhost:8000/dashboard/home
         this link will redirect you to login page 
-        ==> enter your email and password
+        ==> Credentials:
+        email:     admin@admin.com
+        password:  123456
  
     ////////////////////////thanks/////////////////////////
 
