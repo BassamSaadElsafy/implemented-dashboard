@@ -11,7 +11,7 @@
     @include('dashboard.partials._success')
     @include('dashboard.partials._error')
 
-    <form action="{{ route('forgotpassword') }}" method="post"> 
+    <form action="{{ route('dashboard.forgot_password') }}" method="post"> 
 
       @csrf
 
@@ -33,7 +33,7 @@
   
 
     <a href="#">I forgot my password</a><br>
-    I have not account <a href="{{ route('register') }}" class="text-center">Sign up</a>
+    I have not account <a href="" class="text-center">Sign up</a>
 
   </div>
   <!-- /.login-box-body -->
