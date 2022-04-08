@@ -4,23 +4,20 @@
     implemented dashboard:
 
     steps:-
-    open your terminal:
-    1- $composer install
-    2- $cp .env.example .env
-    3- open .env then change db_name. after that create it
-    4- $php artisan migrate --seed
-  
-    6- $php artisan serve 
+        open your terminal:
 
-    7- go to 
-        localhost:8000/dashboard/home
-        this link will redirect you to login page 
-        ==> Credentials:
-        email:     admin@admin.com
-        password:  123456
+        1- $composer install
+        2- $cp .env.example .env
+        3- open .env then change db_name. after that create it
+        4- $php artisan migrate --seed
+        5- $php artisan serve 
+        6- open this link 
+            localhost:8000/dashboard/home
+            #you will redirect to login page 
+            ==> Credentials:
+                email:     admin@admin.com
+                password:  123456
  
-    ////////////////////////thanks/////////////////////////
-
 </p>
 
 <p align="center">
