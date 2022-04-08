@@ -40,10 +40,9 @@ class AdminController extends Controller
         //validation
         $request->validate([
             'name'              => 'required',
-            'phone'             => 'required|numeric|regex:/(01)[0-9]{9}/|unique:admins',
-            'level'             => 'required|in:manager,receptionist,client',
+            'phone'             => 'sometimes|nullable|regex:/(01)[0-9]{9}/|unique:admins',
             'email'             => 'required|email|unique:admins,email',
-            'password'          => 'required|min:8',
+            'password'          => 'required|min:6',
             'confirm_password'  => 'required|same:password'
         ]);
 
@@ -55,28 +54,21 @@ class AdminController extends Controller
         ]);
 
         session()->flash('success', 'account created successfully');
-
-        // return redirect()->route('login');
         return redirect()->route('admins.index');
     }
 
-
-    //edit function
     public function edit(Admin $admin)
     {
 
         return view('dashboard.admins.edit' , ['title' => trans('dashboard.edit_record') , 'admin' => $admin]);
 
-    }//end of edit function
+    }
 
-    //update function
     public function update(Request $request, Admin $admin)
     {
-
         $data = $this->validate(request() , [
             'name'             => 'required',
-            'phone'            => 'required|numeric|regex:/(01)[0-9]{9}/|unique:admins,id,'.$admin->id,
-            'level'            => 'required',
+            'phone'            => 'sometimes|nullable|regex:/(01)[0-9]{9}/|unique:admins,id,'.$admin->id,
             'email'            => 'required|email|unique:admins,email,'.$admin->id,   //to ignore this id from unique
             'password'         => 'required|min:6',
             'confirm_password' => 'required|same:password|min:6'
@@ -86,39 +78,37 @@ class AdminController extends Controller
             'email'            => trans('dashboard.email'),
             'password'         => trans('dashboard.password'),
             'confirm_password' => trans('dashboard.confirm_password'),
-            'level'            => trans('dashboard.level'),
         ]);
 
         //delete index confirm password from data array
         unset($data['confirm_password']);
-        if(request()->has('password')){
-            $data['password'] = bcrypt(request('password'));
-        }
 
+        $data['password'] = bcrypt(request('password'));
+        
         $admin->update($data);
         session()->flash('success' , trans('dashboard.record_updated'));
         return redirect()->route('admins.index');
 
-    }//end of update function
+    }
 
-    //destroy function
+    
     public function destroy(Admin $admin)
     {
         $admin->delete();
         session()->flash('success' , trans('dashboard.record_deleted'));
         return redirect()->route('admins.index');
+    }
 
-    }//end of destroy function
-
-    //multi-delete function
+    
     public function multi_delete(){
 
         if (is_array(request('item'))) {
             Admin::destroy(request('item'));
             session()->flash('success', trans('dashboard.record_deleted'));
+        }else{
+            session()->flash('error', trans('dashboard.something_went_wrong'));
         }
 
-        session()->flash('error', trans('dashboard.something_went_wrong'));
         return back();
-    }//end of multi-delete function
+    }
 }

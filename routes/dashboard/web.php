@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AdminAuthenticationController;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\SEttingController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +35,16 @@ Route::get('/login', [AdminAuthenticationController::class , 'login'])->name('da
         ]);
 
         Route::delete('/admins/delete/all',[AdminController::class , 'multi_delete'])->name('admins.destroy_all');
+
+        //******************************************* Settings Routes **********************************************************//
+
+        Route::resource('settings', SettingController::class,[
+            'names' => [
+                'edit'        => 'admins.edit',
+                'update'      => 'admins.update',
+            ]
+        ]);
+
+
 
     });

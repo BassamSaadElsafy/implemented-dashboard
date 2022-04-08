@@ -23,55 +23,43 @@
 
         <div class="form-group col-md-12 col-lg-12 col-sm-12 col-xs-12">
 
-            <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-6">
+            <div class="form-group col-md-4 col-lg-4 col-sm-12 col-xs-12">
                 {!! Form::label('name' , trans('dashboard.name')) !!}
-                {!! Form::text('name' ,$admin->name,['class' => 'form-control']) !!}
+                {!! Form::text('name' ,$admin->name,['class' => 'form-control', 'placeholder' => trans('dashboard.name')]) !!}
             </div>
 
-            <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-6">
+            <div class="form-group col-md-4 col-lg-4 col-sm-12 col-xs-12">
                 {!! Form::label('phone' , trans('dashboard.phone')) !!}
-                {!! Form::text('phone' , $admin->phone,['class' => 'form-control']) !!}
+                {!! Form::text('phone' ,$admin->phone,['class' => 'form-control', 'placeholder' => trans('dashboard.phone')]) !!}
             </div>
 
-        </div>
 
-
-        <div class="form-group col-md-12 col-lg-12 col-sm-12 col-xs-12">
-
-            <div class="form-group col-md-4 col-lg-4 col-sm-4 col-xs-4">
-                {!! Form::label('level' , trans('dashboard.level')) !!}
-                {!! Form::select('level' ,[
-                'manager'      => trans('dashboard.manager'),
-                'receptionist' => trans('dashboard.receptionist'),
-                'client'       => trans('dashboard.client'),
-                ], $admin->level , 
-                ['class' => 'form-control user_level' , 'placeholder'=>'...']) !!}
-            </div>
-
-            <div class="form-group col-md-4 col-lg-4 col-sm-4 col-xs-4">
+            <div class="form-group col-md-4 col-lg-4 col-sm-12 col-xs-12">
                 {!! Form::label('email' , trans('dashboard.email')) !!}
-                {!! Form::email('email' , $admin->email , ['class' => 'form-control']) !!}
+                {!! Form::email('email' ,$admin->email,['class' => 'form-control', 'placeholder' => trans('dashboard.email')]) !!}
             </div>
 
+
         </div>
+
 
         <div class="form-group col-md-12 col-lg-12 col-sm-12 col-xs-12">
 
 
-            <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-6">
+            <div class="form-group col-md-6 col-lg-6 col-sm-12 col-xs-12">
                 {!! Form::label('password' , trans('dashboard.password')) !!}
-                {!! Form::password('password',['class' => 'form-control']) !!}
+                {!! Form::password('password',['class' => 'form-control', 'placeholder' => trans('dashboard.password')]) !!}
             </div>
 
-            <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-6">
+            <div class="form-group col-md-6 col-lg-6 col-sm-12 col-xs-12">
                 {!! Form::label('confirm_password' , trans('dashboard.confirm_password')) !!}
-                {!! Form::password('confirm_password',['class' => 'form-control']) !!}
+                {!! Form::password('confirm_password',['class' => 'form-control', 'placeholder' => trans('dashboard.confirm_password') ]) !!}
             </div>
 
 
         </div>
 
-        {!! Form::submit(trans('dashboard.add_admin') , ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit(trans('dashboard.save_changes') , ['class' => 'btn btn-primary']) !!}
 
 
         {!! Form::close() !!}

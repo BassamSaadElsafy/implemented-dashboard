@@ -15,6 +15,8 @@ return [
     'admins'      =>  'Admins',
     'all_admins'   => 'All Admins',
     'admin_panel'    => 'Admin Control',
+    'save_changes'  => 'Save Changes',
+    'settings' => 'Settings',
 
     //translation for datatables Dom
     'print'                       => 'Print',
