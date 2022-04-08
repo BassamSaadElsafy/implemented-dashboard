@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 
 use Carbon\Carbon;
 
-class AdminAuthentication extends Controller
+class AdminAuthenticationController extends Controller
 {
 
     public function index()
@@ -29,7 +29,6 @@ class AdminAuthentication extends Controller
     }
 
     public function dologin(Request $request){
-
         $request->validate([
             'email'     => 'required',
             'password' => 'required'
@@ -42,10 +41,7 @@ class AdminAuthentication extends Controller
         $rememberme = $request->rememberme == 1 ? true : false;
 
         if( auth()->guard('admin')->attempt(['email' => $request->email , 'password' => $request->password], $rememberme)){
-
             return redirect()->route('dashboard.home');
-           
-
         }else{
             session()->flash('error', trans('dashboard.invalid_email_or_password'));
             return redirect()->route('dashboard.login');
@@ -53,7 +49,6 @@ class AdminAuthentication extends Controller
 
     }
 
-    
 
     //logout function
     public function logout(Request $request)

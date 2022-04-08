@@ -31,6 +31,10 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ url('/') }}/dashboard/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+  {{--  my custom css file  --}}
+  <link rel="stylesheet" href="{{ url('/') }}/dashboard/style.css">
+
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

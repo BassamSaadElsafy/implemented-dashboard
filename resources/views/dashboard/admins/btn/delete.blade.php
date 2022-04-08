@@ -9,7 +9,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title"><b>{{ trans('admin.warning') }}</b></h3>
+        <h3 class="modal-title"><b>{{ trans('dashboard.warning') }}</b></h3>
       </div>
       {!! Form::open(['route' => ['admins.destroy',$id] , 'method' => 'delete' ]) !!}
       <div class="modal-body">

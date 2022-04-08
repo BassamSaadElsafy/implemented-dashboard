@@ -16,7 +16,7 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->enum('level', ['admin', 'super_admin'])->default('admin');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

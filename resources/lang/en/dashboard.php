@@ -3,7 +3,7 @@ return [
 
     'login'                     => 'Login',
     'register'  => 'Register',
-    'invalid_email_or_password'  => 'Invalid e-mail or password!',
+    'invalid_email_or_password'  => 'Invalid Credentials!',
     'admin_email_required'   =>  'Admin\'s E-mail',
     'the_reset_link_sent_successfully'  => 'the reset link sent successfully',
     'invalid_email'  => 'Invalid Email',
@@ -72,7 +72,7 @@ return [
     'yes'                         => 'Yes',
     'no'                          => 'No',
     'please_check_some_records'   => 'Please check some records!!',
-    'delete_all'                  => 'Multi-Delete',
+    'delete_all'                  => 'Delete records',
     'ask_delete_item'             => 'Are you sure you want to delete ',
     'que_mark'                    => '?',
 
